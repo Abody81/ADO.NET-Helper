@@ -6,7 +6,7 @@ internal class Example
 {
     static async Task Main(string[] args)
     {
-        string ConnString = "Server=.;DataBase=School Management System;Integrated Security=True;TrustServerCertificate=True;";
+        string ConnString = "Your_Connection_String;";
 
         ADOHelper helper = new ADOHelper(ConnString);
 
