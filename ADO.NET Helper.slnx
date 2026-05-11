@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ADO.NET_Helper/ADO.NET_Helper.csproj" />
+  <Project Path="TestHelper/TestHelper.csproj" />
+</Solution>
