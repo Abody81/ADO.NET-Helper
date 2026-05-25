@@ -4,6 +4,11 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	<Authors>Abody81</Authors>
+	<Description>A lightweight, high-performance Asynchronous ADO.NET Wrapper for .NET applications. This utility simplifies database interactions by automating connection management, reducing boilerplate &gt; code, and providing a clean, generic interface for data mapping.</Description>
+	<Company />
+	<Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
