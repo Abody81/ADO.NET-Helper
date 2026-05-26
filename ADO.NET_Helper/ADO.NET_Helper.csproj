@@ -5,16 +5,19 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	<PackageId>Abody81.ADOHelper</PackageId>
 	<Authors>Abody81</Authors>
 	<Description>A lightweight, high-performance Asynchronous ADO.NET Wrapper for .NET applications. This utility simplifies database interactions by automating connection management, reducing boilerplate &gt; code, and providing a clean, generic interface for data mapping.</Description>
 	<Company />
-	<Version>1.0.2</Version>
+	<Version>1.0.5</Version>
 
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
 
 	  <PackageReadmeFile>README.md</PackageReadmeFile>
 
 	  <RepositoryUrl>https://github.com/Abody81/ADO.NET-Helper</RepositoryUrl>
+
+	  <PackageProjectUrl>https://github.com/Abody81/ADO.NET-Helper</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

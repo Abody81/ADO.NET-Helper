@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+	
+	<metadata>
+		<id>Abody81.ADOHelper</id>
+		
+		<version>1.1.0</version>
+		
+		<authors>Abody81</authors>
+		<owners>Abody81</owners>
+		
+		<description>A lightweight, high-performance Asynchronous ADO.NET Wrapper for .NET applications. This utility simplifies database interactions by automating connection management, reducing boilerplate &gt; code, and providing a clean, generic interface for data mapping.</description>
+		
+		<projectUrl>https://github.com/Abody81/ADO.NET-Helper</projectUrl>
+		
+		<repository type="git" url="https://github.com/Abody81/ADO.NET-Helper" />
+		
+		<license type="expression">MIT</license>
+		
+		<readme>README.md</readme>
+	</metadata>
+
+	<files>
+		<file src="README.md" target="\" />
+		
+		<file src="ADO.NET_Helper\bin\Release\net10.0\ADO.NET_Helper.dll" target="lib\net10.0" />
+		
+		<file src="ADO.NET_Helper.NET8\bin\Release\net8.0\ADO.NET_Helper.NET8.dll" target="lib\net8.0" />
+	</files>
+	
+</package>

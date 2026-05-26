@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="ADO.NET_Helper.NET8/ADO.NET_Helper.NET8.csproj" Id="d261ff57-302a-4a1f-a238-ba63962abc49" />
   <Project Path="ADO.NET_Helper/ADO.NET_Helper.csproj" />
   <Project Path="TestHelper/TestHelper.csproj" />
 </Solution>
