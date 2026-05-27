@@ -1,12 +1,13 @@
 ﻿using ADO_Helper;
 using Microsoft.Data.SqlClient;
 using System.Data;
+using System.Reflection.Metadata;
 
 internal class Example
 {
     static async Task Main(string[] args)
     {
-        string ConnString = "Your_Connection_String;";
+        string ConnString = "Server=.;DataBase=School Management System;Integrated Security=True;TrustServerCertificate=True;";
 
         ADOHelper helper = new ADOHelper(ConnString);
 
@@ -21,17 +22,28 @@ internal class Example
             cmd => cmd.Parameters.AddWithValue("@FirstName", "Jeff"));
 
 
+        // Method 1
+
+        DataTable dt4 = await helper.ExecuteDataTableAsync("sp_People_GetAll",
+            cmd =>
+            {
+                cmd.Parameters.AddWithValue("@PageNumber", 1);
+                cmd.Parameters.AddWithValue("@RowsPerPage", 10);
+            }
+            , CommandType.StoredProcedure);
+
+        // Method 2
+
         void Parameters1(SqlCommand command)
         {
             command.Parameters.AddWithValue("@PageNumber", 1);
             command.Parameters.AddWithValue("@RowsPerPage", 10);
         }
-        DataTable dt4 = await helper.ExecuteDataTableAsync("sp_People_GetAll", Parameters1, CommandType.StoredProcedure);
 
+        DataTable dt5 = await helper.ExecuteDataTableAsync("sp_People_GetAll", Parameters1, CommandType.StoredProcedure);
 
 
         //  - NonQuery -
-
 
         int RowsEffected1 = await helper.ExecuteNonQueryAsync("Delete from People Where PersonID = @PersonID",
             cmd => cmd.Parameters.AddWithValue("@PersonID", 2000));
@@ -46,18 +58,18 @@ internal class Example
             CommandType.StoredProcedure);
 
 
+
         // - Execute Scalar -
 
-        object _FirstName = await helper.ExecuteScalarAsync("Select FirstName From People Where PersonID = @PersonID", cmd => cmd.Parameters.AddWithValue("@PersonID", 12));
-
-        string FirstName = _FirstName.ToString()!;
+        string? FirstName = await helper.ExecuteScalarAsync<string>("Select FirstName From People Where PersonID = @PersonID",
+            cmd => cmd.Parameters.AddWithValue("@PersonID", 12));
 
 
 
         // - Reader -
+        // Note: This function return a single record or null.
 
-
-        // method 1
+        // Method 1
         Person FromDataReader(IDataReader reader)
         {
             return new Person
@@ -71,9 +83,9 @@ internal class Example
             cmd => cmd.Parameters.AddWithValue("@PersonID", 1), FromDataReader);
 
 
-        // method 2
+        // Method 2
         Person person2 = await helper.ExecuteReaderAsync("Select FirstName, LastName from People Where PersonID = @PersonID",
-            cmd => cmd.Parameters.AddWithValue("@PersonID", 1), 
+            cmd => cmd.Parameters.AddWithValue("@PersonID", 1),
            reader =>
            {
                return new Person
@@ -89,7 +101,7 @@ internal class Example
 
         List<Person> people = await helper.ExecuteListAsync("Select * from People Where FirstName = @FirstName",
             cmd => cmd.Parameters.AddWithValue("@FirstName", "jeff"),
-            reader => 
+            reader =>
             {
                 return new Person
                 {
